@@ -1,6 +1,6 @@
-import Layout from '../components/layout'
+import HomeLayout from '../components/homeLayout'
 
 
 export default function Home() {
-	return <Layout pageTitle="Home">Hi, home</Layout>
+	return <HomeLayout pageTitle="Home">Hi, home</HomeLayout>
 }

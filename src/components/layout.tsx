@@ -1,44 +1,9 @@
 import { Fragment } from 'react'
 import { Link } from 'gatsby'
-import styled, { createGlobalStyle } from 'styled-components'
 import '@fontsource/roboto'
 import '@fontsource/roboto-slab'
-
-const Globals = createGlobalStyle`
-
-* {
-	box-sizing: border-box;
-	font-family: 'Roboto', sans-serif;
-}
-
-body {
-	margin: 0;
-	padding: 0;
-}
-`
-
-const Main = styled.main`
-	margin: 1rem 20rem;
-`
-
-const H1 = styled.h1`
-	font-family: 'Roboto Slab', serif;
-	color: rebeccapurple;
-`
-
-const Ul = styled.ul`
-	list-style: none;
-	display: flex;
-	padding-left: 0;
-`
-
-const NavItem = styled.li`
-	padding-right: 2rem;
-`
-
-const StyledLink = styled(Link)`
-	color: black;
-`
+import '@fontsource/roboto-slab/300.css'
+import '@fontsource/roboto-slab/400.css'
 
 interface LayoutProps {
 	pageTitle: string
@@ -48,22 +13,21 @@ interface LayoutProps {
 export default function Layout({ pageTitle, children }: LayoutProps) {
 	return (
 		<Fragment>
-			<Globals />
-			<Main>
+			<main className="mx-80 mt-5">
 				<title>{pageTitle}</title>
 				<nav>
-					<Ul>
-						<NavItem>
-							<StyledLink to="/">Home</StyledLink>
-						</NavItem>
-						<NavItem>
-							<StyledLink to="/about">About</StyledLink>
-						</NavItem>
-					</Ul>
+					<ul className="flex space-x-8 font-bold underline">
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<Link to="/about">About</Link>
+						</li>
+					</ul>
 				</nav>
-				<H1>{pageTitle}</H1>
+				<h1 className="mt-6 mb-6 text-purple-700 text-3xl">{pageTitle}</h1>
 				{children}
-			</Main>
+			</main>
 		</Fragment>
 	)
 }

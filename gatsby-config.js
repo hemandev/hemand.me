@@ -7,7 +7,7 @@ module.exports = {
 		title: 'Hemand S',
 	},
 	plugins: [
-		'gatsby-plugin-styled-components',
+		'gatsby-plugin-postcss',
 		'gatsby-plugin-gatsby-cloud',
 		'gatsby-plugin-image',
 		'gatsby-plugin-react-helmet',
@@ -32,6 +32,16 @@ module.exports = {
 				schemas: {
 					post: require('./src/schemas/post.json'),
 				},
+			},
+		},
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [
+					{
+						resolve: `gatsby-remark-prismjs`,
+					},
+				],
 			},
 		},
 		{
