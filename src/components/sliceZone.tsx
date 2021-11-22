@@ -9,7 +9,6 @@ const SliceMap = {
 }
 
 export default function SliceZone({ body }) {
-	console.log('Inide body   ', body)
 	return (
 		<>
 			{body &&

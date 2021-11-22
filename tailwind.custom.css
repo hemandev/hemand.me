@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	@variants responsive {
+		.clip-path-hero {
+			clip-path: ellipse(60% 100% at 50% 0%);
+		}
+
+        .clip-path-footer {
+			clip-path: ellipse(118% 100% at 103% 100%);
+		}
+	}
+}
