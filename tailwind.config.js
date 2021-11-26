@@ -11,12 +11,12 @@ module.exports = {
 			},
 			gridTemplateColumns: {
 				'layout-home-md':
-					'minmax(2rem, 1fr) minmax(40ch, 85ch) minmax(10ch, 20ch) minmax(2rem, 1fr)',
+					'minmax(1rem, 1fr) minmax(20ch, 85ch) minmax(10ch, 20ch) minmax(1rem, 1fr)',
 				'layout-home':
-					'minmax(2rem, 1fr) minmax(40ch, 90ch) minmax(2rem, 1fr)',
+					'minmax(1rem, 1fr) minmax(20ch, 90ch) minmax(1rem, 1fr)',
 				'layout-post-md':
-					'minmax(2rem, 1fr) minmax(40ch, 90ch) minmax(2rem, 1fr)',
-				'layout-post': 'minmax(2rem, 1fr) minmax(40ch, 90ch) minmax(2rem, 1fr)',
+					'minmax(1rem, 1fr) minmax(20ch, 90ch) minmax(1rem, 1fr)',
+				'layout-post': 'minmax(1rem, 1fr) minmax(20ch, 90ch) minmax(1rem, 1fr)',
 			},
 			colors: {
 				primary: '#2EB872',

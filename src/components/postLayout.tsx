@@ -27,7 +27,7 @@ export default function PostLayout({
 				<main className="col-start-2 col-end-3 row-start-3 row-end-4">
 					{children}
 				</main>
-				<aside className="col-start-3 col-end-4 row-start-3 row-end-4 flex flex-col gap-12">
+				<aside className="col-start-3 col-end-4 row-start-3 row-end-4 flex flex-col md:gap-12">
 					{aside}
 				</aside>
 				<div className="col-start-1 col-end-5 row-start-4 row-end-6 bg-gradient-to-br from-green-400 to-green-500 py-12 md:py-20 mt-8"></div>
