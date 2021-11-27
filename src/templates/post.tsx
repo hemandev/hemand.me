@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby'
 
-import PostLayout from '../components/postLayout'
+import PostLayout from '../components/layout/postLayout'
 import SliceZone from '../components/sliceZone'
 
 export const query = graphql`

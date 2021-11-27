@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import { Fragment } from 'react'
-import HomeLayout from '../components/homeLayout'
-import Post from '../components/post'
+import HomeLayout from '../components/layout/homeLayout'
+import PostBlock from '../components/postBlock'
 import SectionHeader from '../components/sectionHeader'
 import Tag from '../components/tag'
 
@@ -55,7 +55,6 @@ export const query = graphql`
 
 export default function Home({ data }) {
 	let posts = data.allPrismicPost.edges.map((item: any) => {
-		console.log('item ', item)
 		let {
 			node: { data, uid, tags },
 		} = item
@@ -65,7 +64,6 @@ export default function Home({ data }) {
 			tags,
 		}
 	}) as Post[]
-	console.log('posts is ', posts)
 	return (
 		<HomeLayout
 			pageTitle="Home"
@@ -190,7 +188,7 @@ export default function Home({ data }) {
 
 				<article className="my-3 mr-8">
 					{posts.map(post => (
-						<Post
+						<PostBlock
 							key={post.uid}
 							path={post.uid}
 							heading={post.heading.html}

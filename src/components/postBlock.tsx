@@ -6,16 +6,16 @@ interface PostProps {
 	path: string
 }
 
-export default function Post({ heading, content, path }: PostProps) {
+export default function PostBlock({ heading, content, path }: PostProps) {
 	return (
 		<Link to={path} className="my-6 mr-10 md:my-8 md:mr-12 group">
 			<h5
 				className="font-sans text-2xl md:text-3xl font-normal text-gray-800 mb-2 group-hover:text-green-500 transition ease-in duration-100"
-				dangerouslySetInnerHTML={{ __html: heading }}
+				dangerouslySetInnerHTML={{ __html: `<div>${heading}</div>` }}
 			/>
-			<p
+			<div
 				className="font-sans font-normal text-md md:text-lg text-gray-700"
-				dangerouslySetInnerHTML={{ __html: content }}
+				dangerouslySetInnerHTML={{ __html: `<div>${content}</div>` }}
 			/>
 		</Link>
 	)
