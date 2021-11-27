@@ -78,7 +78,7 @@ export default function Post({ data: { prismicPost } }) {
 					<li>
 						<Link to="/posts">Posts</Link>
 					</li>
-					<li className="">
+					<li className="md:mr-auto">
 						<Link to="/about">About</Link>
 					</li>
 					<li>

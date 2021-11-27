@@ -21,7 +21,7 @@ export default function PostLayout({
 				<div className="col-start-1 col-end-5 row-start-1 row-end-2 bg-gradient-to-br from-green-500 to-green-400 transform -rotate-1 m-5 mb-10 rounded-xl">
 					&nbsp;
 				</div>
-				<nav className="col-start-2 col-end-4 row-start-1 row-end-2 py-12 md:py-20 z-10">
+				<nav className="col-start-2 col-end-3 row-start-1 row-end-2 py-12 md:py-20 z-10">
 					{nav}
 				</nav>
 				<main className="col-start-2 col-end-3 row-start-3 row-end-4">

@@ -1,11 +1,71 @@
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Fragment } from 'react'
 import HomeLayout from '../components/homeLayout'
 import Post from '../components/post'
 import SectionHeader from '../components/sectionHeader'
 import Tag from '../components/tag'
 
-export default function Home() {
+interface Post {
+	heading: { html: string }
+	date_published: string
+	content: { html: string }
+	uid: string
+	tags?: string
+}
+
+export const query = graphql`
+	{
+		allPrismicPost {
+			edges {
+				node {
+					data {
+						author
+						date_published
+						content {
+							html
+						}
+						heading {
+							html
+						}
+
+						body {
+							... on PrismicPostDataBodyText {
+								id
+								slice_label
+								primary {
+									text {
+										html
+										raw
+										text
+									}
+								}
+								slice_type
+							}
+						}
+					}
+					id
+					last_publication_date
+					uid
+					tags
+				}
+			}
+		}
+	}
+`
+
+export default function Home({ data }) {
+	let posts = data.allPrismicPost.edges.map((item: any) => {
+		console.log('item ', item)
+		let {
+			node: { data, uid, tags },
+		} = item
+		return {
+			...data,
+			uid,
+			tags,
+		}
+	}) as Post[]
+	console.log('posts is ', posts)
 	return (
 		<HomeLayout
 			pageTitle="Home"
@@ -129,54 +189,14 @@ export default function Home() {
 				<SectionHeader>Recently published</SectionHeader>
 
 				<article className="my-3 mr-8">
-					<Post
-						path="/10/12/1996/intro-to-webcomponents"
-						heading="Intro to webcomponents"
-						content="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-			Dignissimos laborum cumque incidunt, enim ipsa dicta? Porro illo
-			doloribus, consectetur eum exercitationem sit ipsam, est
-			nesciunt maxime, eius animi dolor? Harum."
-					/>
-					<Post
-						path="/a-sneak-peek-into-functional-programming-and-higher-order"
-						heading="How to write your own map, filter and reduce functions in JavaScript"
-						content="A sneak peek into functional programming and higher-order functions in Javascript.
-		Whenever I hear about functional programming, the first thing that comes to my mind is higher-order functions."
-					/>
-
-					<Post
-						path="/10/12/1996/intro-to-webcomponents"
-						heading="Intro to webcomponents"
-						content="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-			Dignissimos laborum cumque incidunt, enim ipsa dicta? Porro illo
-			doloribus, consectetur eum exercitationem sit ipsam, est
-			nesciunt maxime, eius animi dolor? Harum."
-					/>
-
-					<Post
-						path="/10/12/1996/intro-to-webcomponents"
-						heading="Intro to webcomponents"
-						content="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-			Dignissimos laborum cumque incidunt, enim ipsa dicta? Porro illo
-			doloribus, consectetur eum exercitationem sit ipsam, est
-			nesciunt maxime, eius animi dolor? Harum."
-					/>
-					<Post
-						path="/10/12/1996/intro-to-webcomponents"
-						heading="Intro to webcomponents"
-						content="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-			Dignissimos laborum cumque incidunt, enim ipsa dicta? Porro illo
-			doloribus, consectetur eum exercitationem sit ipsam, est
-			nesciunt maxime, eius animi dolor? Harum."
-					/>
-					<Post
-						path="/10/12/1996/intro-to-webcomponents"
-						heading="Intro to webcomponents"
-						content="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-			Dignissimos laborum cumque incidunt, enim ipsa dicta? Porro illo
-			doloribus, consectetur eum exercitationem sit ipsam, est
-			nesciunt maxime, eius animi dolor? Harum."
-					/>
+					{posts.map(post => (
+						<Post
+							key={post.uid}
+							path={post.uid}
+							heading={post.heading.html}
+							content={post.content.html}
+						/>
+					))}
 				</article>
 			</Fragment>
 		</HomeLayout>
